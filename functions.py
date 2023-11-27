@@ -3,22 +3,25 @@ import math
 import matplotlib.pyplot as plt
 
 
-def echli_function(x_, y_):
-    return -20 * np.exp(-0.2 * np.sqrt(0.5 * (x_ ** 2 + y_ ** 2))) - \
-        np.exp(0.5 * (np.cos(2 * np.pi * x_) + np.cos(2 * np.pi * y_))) + np.e + 20
+def rastrigina_func(vect, n=3):
+    a = 10
+    sum_ = 0
+    for i in range(n):
+        sum_ += vect[i] ** 2 - a * np.cos(2 * np.pi * vect[i])
+    return a * n + sum_
 
 
-def himmelblau_function(x, y):
-    return (x ** 2 + y - 11) ** 2 + (x + y ** 2 - 7) ** 2
+def echli_function(vect, n=2):
+    return -20 * np.exp(-0.2 * np.sqrt(0.5 * (vect[0] ** 2 + vect[1] ** 2))) - \
+        np.exp(0.5 * (np.cos(2 * np.pi * vect[0]) + np.cos(2 * np.pi * vect[1]))) + np.e + 20
 
 
-def rastrigina_function(x, y):
-    a_ = 10
-    return 2 * a_ + x ** 2 - a_ * np.cos(2 * np.pi * x) + y ** 2 - a_ * np.cos(2 * np.pi * y)
+def himmelblau_function(vect, n=2):
+    return (vect[0] ** 2 + vect[1] - 11) ** 2 + (vect[0] + vect[1] ** 2 - 7) ** 2
 
 
-def izoma_func(x, y):
-    return -np.cos(x) * np.cos(y) * np.exp(-((x - np.pi) ** 2) + (y - np.pi) ** 2)
+def izoma_func(vect, n=None):
+    return -np.cos(vect[0]) * np.cos(vect[1]) * np.exp(-((vect[0] - np.pi) ** 2) + (vect[1] - np.pi) ** 2)
 
 
 def euclidean_distance(point1, point2):

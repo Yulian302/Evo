@@ -70,7 +70,7 @@ def aco(distance_matrix, num_ants, iterations, pheromone_evaporation, alpha, bet
 
 
 def select_next_city(ant, pheromone, alpha_, beta_, q0=None):
-    current_city = ant.route[-1]  # Get the current city of the ant
+    current_city = ant.address[-1]  # Get the current city of the ant
     unvisited_cities = [city for city in range(len(pheromone)) if city not in ant.visited_cities]
 
     # Calculate the probability of selecting each unvisited city
@@ -113,9 +113,9 @@ def select_next_city(ant, pheromone, alpha_, beta_, q0=None):
 
 def calculate_ant_distance(ant, distance_matrix):
     total_distance = 0.0
-    for i in range(len(ant.route) - 1):
-        current_city = ant.route[i]
-        next_city = ant.route[i + 1]
+    for i in range(len(ant.address) - 1):
+        current_city = ant.address[i]
+        next_city = ant.address[i + 1]
         total_distance += distance_matrix[current_city][next_city]
     ant.distance = total_distance
 
